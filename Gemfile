@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.5.0'
 
 gem 'carrierwave'
 gem 'sassc-rails'
@@ -14,9 +15,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'skeleton'
 gem 'coffee-rails'
 gem 'fog-aws'
-gem 'activerecord'
-gem 'activemodel'
-gem 'activesupport'
 
 group :production do
   gem 'pg'
