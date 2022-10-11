@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'activerecord', '~> 4.2.7'
+gem 'activemodel', '~> 4.2.7'
+gem 'activesupport', '~> 4.2.7'
 gem 'carrierwave'
 gem 'sassc-rails'
 gem 'bootsnap'
