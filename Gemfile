@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'activerecord', '~> 4.2.7'
-gem 'activemodel', '~> 4.2.7'
-gem 'activesupport', '~> 4.2.7'
 gem 'carrierwave'
 gem 'sassc-rails'
 gem 'bootsnap'
@@ -17,6 +14,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'skeleton'
 gem 'coffee-rails'
 gem 'fog-aws'
+gem 'activerecord', '~> 4.2.7'
+gem 'activemodel', '~> 4.2.7'
+gem 'activesupport', '~> 4.2.7'
 
 group :production do
   gem 'pg'
