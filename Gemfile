@@ -14,9 +14,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'skeleton'
 gem 'coffee-rails'
 gem 'fog-aws'
-gem 'activerecord', '~> 4.2.7'
-gem 'activemodel', '~> 4.2.7'
-gem 'activesupport', '~> 4.2.7'
+gem 'activerecord', '~> 4.2.8'
+gem 'activemodel', '~> 4.2.8'
+gem 'activesupport', '~> 4.2.8'
 
 group :production do
   gem 'pg'
