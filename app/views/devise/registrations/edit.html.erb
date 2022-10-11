@@ -1,0 +1,54 @@
+<h2><%= t('place.edit_user')%></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render partial: 'partials/form_errors', locals: {model: resource} %>
+
+  <div class="field form-group row">
+    <div class="col-sm-4">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field form-group row">
+    <div class="col-sm-12">
+      <%= f.label :password %> <i>(<%= t('place.leave')%>)</i>
+      <% if @minimum_password_length %>
+        <em>(<%= t('place.min_char', count: @minimum_password_length) %>)</em>
+      <% end %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="field form-group row">
+    <div class="col-sm-4">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="field form-group row">
+    <div class="col-sm-12">
+      <%= f.label :current_password %> <i>(<%= t('place.confirm_password')%>)</i><br />
+    </div>
+    <div class="col-sm-4">
+      <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t('place.confirm'), class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<h3><%= t('place.delete_account')%></h3>
+
+<p><%= t('place.unhappy')%> <%= button_to t('place.delete'), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-primary" %></p>
+
+<%= link_to t('place.back'), :back %>

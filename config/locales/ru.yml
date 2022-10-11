@@ -1,0 +1,116 @@
+ru:
+  # Перевод моделей
+  activerecord:
+    # Перевод названия моделей
+    models:
+      user: 'Пользователь'
+      event: 'Событие'
+      subscription: 'Подписка'
+      comment: 'Комментарий'
+      photo: 'Фотография'
+
+    # Перевод названий аттрибутов моделей
+    attributes:
+      user:
+        email: 'Email'
+        name: 'Имя'
+        avatar: 'Аватарка'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+      event:
+        title: 'Название'
+        address: 'Место проведения'
+        datetime: 'Дата и время'
+        description: 'Описание'
+      comment:
+        user_name: 'Ваше имя'
+        body: 'Комментарий'
+      subscription:
+        user_name: 'Ваше имя'
+        user_email: 'Этот email'
+      photo:
+        photo: 'Фотография'
+
+  # Перевод сообщений, которые отправляет контроллер
+  controllers:
+    events:
+      created: 'Вы создали новое мероприятие'
+      updated: 'Вы обновили мероприятие'
+      destroyed: 'Вы удалили мероприятие :('
+    users:
+      updated: 'Вы обновили свой профиль'
+    comments:
+      destroyed: 'Комментарий удален'
+      created: 'Ваш комментарий добавлен'
+      error: 'Ошибка с комментарием'
+    subscriptions:
+      created: 'Вы подписаны на это событие'
+      destroyed: 'Участник отписан'
+      error: 'Подписка/отписка не сработала'
+      user_error: ": Вы не можете подписаться на это событие"
+      email_error: "уже зарегистрирован"
+    photos:
+      error: 'Что-то не так с фоткой'
+      created: 'Вы добавили фотографию к событию'
+      destroyed: 'Вы удалили фотку'
+
+
+  # Перевод названия приложения и компании-разработчика
+  app:
+    name: 'Шашлыки'
+    company: 'Хороший программист'
+  misc:
+    errors:
+      one: 'В вашей форме 1 ошибка'
+      few: 'В вашей форме %{count} ошибки'
+      other: 'В вашей форме %{count} ошибок'
+  place:
+    register: 'Регистрация'
+    login: 'Вход'
+    reg: 'Зарегистривроваться'
+    forgot_password: 'Забыли пароль?'
+    min_char:
+      one: '1 символ минимум'
+      few: '%{count} символа минимум'
+      many: '%{count} символов минимум'
+    edit_user: 'Редактирование пользователя'
+    leave: "Вернитесь на предыдущюю страницу если вы не хотите ничего менять"
+    confirm_password: "Введите текущий пароль, чтобы внести изменения"
+    confirm: "Сохранить"
+    delete_account: "Удаление аккаунта"
+    delete: "Удалить"
+    unhappy: "Подумайте ещё, мы уверены, что вы найдете применение этому сайту"
+    back: "Назад"
+    send_instructions: "Отправить инструкции для смены пароля"
+
+  comments:
+    comment:
+      destroy_confirm: 'Вы уверены, что хотите удалить этот комменатрий?'
+
+  subscriptions:
+    subscription:
+      destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
+
+  event_mailer:
+    comment:
+      title: 'Новый комментарий'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'
+    subscription:
+      title: 'Новая подписка'
+      name: 'Имя'
+      email: 'Email'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'
+    photo:
+      title: 'Новое Фото'
+      name: 'Имя'
+      email: 'Email'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'
