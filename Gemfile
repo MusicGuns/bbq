@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+
+gem 'bigdecimal', '1.3.5'
 gem 'carrierwave'
 gem 'sassc-rails'
 gem 'bootsnap'
