@@ -15,6 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'skeleton'
 gem 'coffee-rails'
 gem 'fog-aws'
+gem 'mailjet'
 
 group :production do
   gem 'pg'
