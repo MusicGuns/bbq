@@ -76,15 +76,5 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  # Базовый урл сайта, для генерации правильных ссылок в письмах
-  # ПРОПИСЫВАЙТЕ свой!
-  config.action_mailer.default_url_options = {host: 'mega-bbq123.herokuapp.com'}
-
-  # Вываливать ли посетителю сайта ошибки при отправке писем
-  config.action_mailer.raise_delivery_errors = true
-
-  # Делать рассылку писем (при false приложение только имитирует отправку)
-  config.action_mailer.perform_deliveries = false
-  config.action_mailer.delivery_method = :mailjet
+  config.action_mailer.delivery_method = :mailjet_api
 end
