@@ -80,7 +80,5 @@ Rails.application.configure do
   # Базовый урл сайта, для генерации правильных ссылок в письмах
   # ПРОПИСЫВАЙТЕ свой!
   config.action_mailer.default_url_options = {host: 'mega-bbq123.herokuapp.com'}
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :mailjet
 end
