@@ -80,5 +80,15 @@ Rails.application.configure do
   # Базовый урл сайта, для генерации правильных ссылок в письмах
   # ПРОПИСЫВАЙТЕ свой!
   config.action_mailer.default_url_options = {host: 'mega-bbq123.herokuapp.com'}
-  config.action_mailer.delivery_method = :mailjet
+  config.action_mailer.delivery_method = :smtp
+
+  # Настройки для работы через GMail аккаунт
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: '587',
+    user_name: ENV["MAIL_SENDER"], # не используйте для тестов свои реальные ящики
+    password: ENV["MAIL_PASSWORD"], # не храните здесь пароль!
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 end
