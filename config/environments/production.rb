@@ -80,24 +80,7 @@ Rails.application.configure do
   # Базовый урл сайта, для генерации правильных ссылок в письмах
   # ПРОПИСЫВАЙТЕ свой!
   config.action_mailer.default_url_options = {host: 'mega-bbq123.herokuapp.com'}
-
-  # Вываливать ли посетителю сайта ошибки при отправке писем
   config.action_mailer.raise_delivery_errors = false
-
-  # Делать рассылку писем (при false приложение только имитирует отправку)
   config.action_mailer.perform_deliveries = true
-  
-  # Устанавливаем протокол, по которому отправлять (SMTP)
-  config.action_mailer.delivery_method = :smtp
-  
-  # А это для SendGrid
-  ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
-    :port           => '587',
-    :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com',
-    :enable_starttls_auto => true
-  }
+  config.action_mailer.delivery_method = :mailjet
 end
