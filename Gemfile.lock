@@ -187,7 +187,7 @@ DEPENDENCIES
   bootsnap
   byebug
   carrierwave (~> 1.2)
-  carrierwave-yandex-disk (~> 0.1.0)
+  carrierwave-yandex-disk
   coffee-rails
   devise
   devise-i18n

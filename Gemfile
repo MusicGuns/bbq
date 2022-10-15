@@ -16,7 +16,7 @@ gem 'skeleton'
 gem 'coffee-rails'
 gem 'dotenv-rails'
 gem 'yandex-disk'
-gem 'carrierwave-yandex-disk', '~> 0.1.0'
+gem 'carrierwave-yandex-disk'
 
 group :production do
   gem 'pg'
