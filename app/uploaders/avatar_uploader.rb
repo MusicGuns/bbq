@@ -11,7 +11,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   if Rails.env.production?
     storage :yandex_disk
   else
-    storage :yandex_disk
+    storage :file
   end
 
   # Папка, в которой будут храниться все наши загруженные файлы
