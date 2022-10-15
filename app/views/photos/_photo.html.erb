@@ -2,6 +2,6 @@
 <div class="event-photo buffer-both">
   <% image_title = "Добавил #{render partial: 'users/user', object: photo.user}" %>
   <div class="col-md-3 mb">
-    <%= link_to image_tag(photo.photo.thumb.public_url, class: "img-fluid"), photo.photo.url, data: {toggle: "lightbox", title: "image_title", gallery: "example-gallery" } %>
+    <%= link_to image_tag(photo.photo.thumb.file.public_url, class: "img-fluid"), photo.photo.url, data: {toggle: "lightbox", title: "image_title", gallery: "example-gallery" } %>
   </div>
 </div>
