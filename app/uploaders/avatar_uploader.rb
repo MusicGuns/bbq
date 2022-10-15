@@ -9,7 +9,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # аватарки хранятся прямо в файловой системе, иначе используем fog
   # для загрузки их на Amazon S3
   if Rails.env.production?
-    storage :fog
+    storage :yandex_disk
   else
     storage :file
   end
