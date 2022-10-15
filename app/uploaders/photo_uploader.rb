@@ -11,7 +11,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   if Rails.env.production?
     storage :yandex_disk
   else
-    storage :file
+    storage :yandex_disk
   end
 
   # Папка, в которой будут храниться все наши загруженные файлы
