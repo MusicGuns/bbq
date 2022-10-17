@@ -2,8 +2,8 @@ module ApplicationHelper
   # Возвращает путь к аватарке данного юзера. Если у пользователя есть его 
   # личная, возвращает её, иначе стандартную.
   def user_avatar(user)
-    if user.avatar?
-      user.avatar.url
+    if user.avatar.attached?
+      user.avatar
     else
       asset_path('user.png')
     end
@@ -11,8 +11,8 @@ module ApplicationHelper
 
   # Аналогично user_avatar, только возвращает миниатюрную версию
   def user_avatar_thumb(user)
-    if user.avatar.file.present?
-      user.avatar.thumb.url
+    if user.avatar.attached?
+      url_for(user.avatar.variant(resize: "100x100"))
     else
       asset_path('user.png')
     end
@@ -24,7 +24,7 @@ module ApplicationHelper
     photos = event.photos.persisted
 
     if photos.any?
-      photos.sample.photo.url
+      url_for(photos.sample.photo)
     else
       asset_path('event.jpg')
     end
@@ -35,7 +35,7 @@ module ApplicationHelper
     photos = event.photos.persisted
 
     if photos.any?
-      photos.sample.photo.thumb.url
+      photos.sample.photo.variant(resize: [100, 100])
     else
       asset_path('event_thumb.jpg')
     end

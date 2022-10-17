@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   after_commit :link_subscriptions, on: :create
 
   # Добавляем аплоадер аватарок, чтобы заработал carrierwave
-  mount_uploader :avatar, AvatarUploader
+  has_one_attached :avatar 
 
   private
 

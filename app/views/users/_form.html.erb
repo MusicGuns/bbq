@@ -14,7 +14,7 @@
   <%# Добавляем поле для выбора картинки %>
   <div class="form-group">
     <%= f.label :avatar %>
-    <p><%= image_tag(@user.avatar.thumb.url) if @user.avatar? %></p>
+    <p><%= image_tag(@user.avatar.variant(resize: "100x100")) if @user.avatar.attached? %></p>
     <%= f.file_field :avatar %>
   </div>
 

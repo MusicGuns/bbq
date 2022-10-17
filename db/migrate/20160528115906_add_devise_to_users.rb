@@ -1,7 +1,7 @@
 # Миграция сгенерирована девайзом при добавлении функционала:
 #   rails g devise User
 #
-class AddDeviseToUsers < ActiveRecord::Migration
+class AddDeviseToUsers < ActiveRecord::Migration[5.2]
 
   # метод self.up - для накатывания миграции
   def self.up

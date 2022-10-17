@@ -10,7 +10,7 @@ class Photo < ActiveRecord::Base
   validates :user, presence: true
 
   # Добавляем аплоадер фотографий, чтобы заработал carrierwave
-  mount_uploader :photo, PhotoUploader
+  has_one_attached :photo
 
   # Этот scope нужен нам, чтобы отделить реальные фотки от болваной
   # см. events_controller

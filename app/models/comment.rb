@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
   validates :body, presence: true
 
   # поле должно быть, только если не выполняется user.present? (у объекта на задан юзер)
-  validates :user_name, presence: true, unless: 'user.present?'
+  validates :user_name, presence: true, unless: -> { user.present? }
 
 
   # переопределяем метод, если есть юзер, выдаем его имя,
