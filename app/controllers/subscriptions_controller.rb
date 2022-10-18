@@ -9,7 +9,7 @@ class SubscriptionsController < ApplicationController
   def create
     @new_subscription = @event.subscriptions.build(subscription_params)
     @new_subscription.user = current_user
-
+    binding.irb
     if @new_subscription.save
       # Отправляем письмо автору события
       EventMailer.subscription(@event, @new_subscription).deliver_now

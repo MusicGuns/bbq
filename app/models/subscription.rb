@@ -3,7 +3,7 @@
 # Модель Подписки
 class Subscription < ActiveRecord::Base
   belongs_to :event
-  belongs_to :user
+  belongs_to :user, optional: true
 
   validates :event, presence: true
 
@@ -13,7 +13,7 @@ class Subscription < ActiveRecord::Base
 
   # для данного event_id один юзер может подписаться только один раз (если юзер задан)
   validates :user, uniqueness: {scope: :event_id}, if: -> { user.present? }
-  validate :subscription_user_event?
+  #validate :subscription_user_event?
   # для данного event_id один email может использоваться только один раз (если нет юзера, анонимная подписка)
   validates :user_email, uniqueness: {scope: :event_id}, unless: -> { user.present? }
   validate :email_registered?, unless: -> { user.present? }

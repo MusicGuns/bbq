@@ -17,6 +17,7 @@ gem "image_processing", ">= 1.2"
 gem 'sprockets'
 gem 'listen'
 gem "font-awesome-rails"
+gem "aws-sdk-s3", require: false
 
 group :production do
   gem 'pg'

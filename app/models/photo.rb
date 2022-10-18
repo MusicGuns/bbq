@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
   belongs_to :event
 
   # Фотографию добавил какой-то пользователь
-  belongs_to :user
+  belongs_to :user, optional: true
 
   # У фотографии всегда есть событие и пользователь
   validates :event, presence: true
