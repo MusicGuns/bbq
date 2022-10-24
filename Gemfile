@@ -18,6 +18,7 @@ gem 'sprockets'
 gem 'listen'
 gem "font-awesome-rails"
 gem "aws-sdk-s3", require: false
+gem "active_storage_validations"
 
 group :production do
   gem 'pg'

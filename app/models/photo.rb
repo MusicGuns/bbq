@@ -8,6 +8,7 @@ class Photo < ActiveRecord::Base
   # У фотографии всегда есть событие и пользователь
   validates :event, presence: true
   validates :user, presence: true
+  validates :photo, attached: true, content_type: [:png, :jpg, :jpeg]
 
   # Добавляем аплоадер фотографий, чтобы заработал carrierwave
   has_one_attached :photo
