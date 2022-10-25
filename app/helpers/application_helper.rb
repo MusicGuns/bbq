@@ -3,7 +3,7 @@ module ApplicationHelper
   # личная, возвращает её, иначе стандартную.
   def user_avatar(user)
     if user.avatar.attached?
-      user.avatar
+      user.avatar.variant(resize: "200x200")
     else
       asset_path('user.png')
     end
