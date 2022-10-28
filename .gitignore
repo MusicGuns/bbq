@@ -25,3 +25,5 @@ public/uploads
 public/uploads
 config/secrets.yml
 config/database.yml
+config/secrets.yml.example
+config/database.yml.example
