@@ -19,6 +19,7 @@ gem 'listen'
 gem "font-awesome-rails"
 gem "aws-sdk-s3", require: false
 gem "active_storage_validations"
+gem 'pundit', '~> 1.1'
 
 group :production do
   gem 'pg'
@@ -27,6 +28,8 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'sqlite3'
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'pundit-matchers', '~> 1.7.0'
 end
 
 group :development do

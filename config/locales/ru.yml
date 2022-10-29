@@ -22,6 +22,7 @@ ru:
         address: 'Место проведения'
         datetime: 'Дата и время'
         description: 'Описание'
+        password: 'Пароль'
       comment:
         user_name: 'Ваше имя'
         body: 'Комментарий'
@@ -114,3 +115,5 @@ ru:
       event: 'Событие'
       datetime: 'Состоится'
       owner: 'Организатор'
+  pundit:
+    not_authorized: "Доступ запрещён"

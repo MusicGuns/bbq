@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   root "events#index"
 
   resources :events do
+    get 'password', on: :member
+
     # вложенный ресурс комментов
     resources :comments, only: [:create, :destroy]
 
