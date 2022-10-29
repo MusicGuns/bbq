@@ -37,10 +37,10 @@ class EventPolicy < ApplicationPolicy
   end
 
   def password_is_right?(event, password)
-    if @password.nil?
+    if (event.subscribers + [event.user]).include?(user) || event.password.nil?
       true
     else
-      event.password == password if event.password.present?
+      event.password == password
     end
   end
 end

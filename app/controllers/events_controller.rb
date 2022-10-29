@@ -2,13 +2,15 @@
 #
 # Контроллер, управляющий событиями
 class EventsController < ApplicationController
-  after_action :verify_policy_scoped, only: [:edit, :destroy, :update]
-  after_action :verify_authorized, except: [:index, :password]
+  after_action :verify_policy_scoped, only: %i[edit destroy update]
+  after_action :verify_authorized, except: %i[index password]
   # Встроенный в девайз фильтр - посылает незалогиненного пользователя
-  before_action :authenticate_user!, except: [:show, :index, :password]
+  before_action :authenticate_user!, except: %i[show index password]
 
   # Задаем объект @event для экшена show
-  before_action :set_event, only: [:show, :password]
+  before_action :set_event, only: %i[show]
+
+  rescue_from Pundit::NotAuthorizedError, with: :render_password
 
   def index
     @events = Event.all
@@ -24,9 +26,6 @@ class EventsController < ApplicationController
 
     # Болванка модели для формы добавления фотографии
     @new_photo = @event.photos.build(params[:photo])
-  end
-
-  def password
   end
 
   def new
@@ -87,5 +86,12 @@ class EventsController < ApplicationController
 
   def password_param
     params[:password]
+  end
+
+  def render_password
+    unless password_param.nil?
+      flash.now[:alert] = I18n.t("pundit.not_authorized")
+    end
+    render :password
   end
 end
