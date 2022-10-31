@@ -5,6 +5,8 @@ class PhotosController < ApplicationController
   # Для действия destroy нужно получить из базы саму фотографию
   before_action :set_photo, only: [:destroy]
 
+  rescue_from Pundit::NotAuthorizedError, with: :you_are_not_subscriber
+
   # Действие для создания новой фотографии
   # Обратите внимание, что фотку может сейчас добавить даже неавторизованный пользовать
   # Смотрите домашки!
@@ -15,6 +17,7 @@ class PhotosController < ApplicationController
     # Проставляем у фотографии пользователя
     @new_photo.user = current_user
 
+    authorize @new_photo
     if @new_photo.save
       notify_subscribers(@event, @new_photo)
       # Если фотографию удалось сохранить, редирект на событие с сообщением
@@ -27,6 +30,8 @@ class PhotosController < ApplicationController
 
   # Действие для удаления фотографии
   def destroy
+    authorize @photo
+
     message = {notice: I18n.t('controllers.photos.destroyed')}
 
     # Проверяем, может ли пользователь удалить фотографию
@@ -69,5 +74,10 @@ class PhotosController < ApplicationController
     all_emails.each do |mail|
       EventMailer.photo(event, photo, mail).deliver_now
     end
+  end
+
+  def you_are_not_subscriber 
+    flash.now[:alert] = I18n.t('pundit.not_subscriber')
+    render 'events/show'
   end
 end

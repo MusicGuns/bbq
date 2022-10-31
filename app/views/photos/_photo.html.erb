@@ -1,6 +1,7 @@
 <%# Паршал для вывода отдельной фотографии %>
 <div class="event-photo buffer-both">
-  <% image_title = "Добавил #{render partial: 'users/user', object: photo.user}" %>
+  <% image_title = "Добавил #{render partial: 'users/user', object: photo.user} 
+    #{ link_to( fa_icon('trash'), event_photo_path(photo.event, photo), method: :delete, data: {confirm: t('.destroy_confirm')})}" %>
   <div class="col-md-3 mb">
     <%= link_to image_tag(photo.photo.variant(resize: "100x100"), class: "img-fluid"), photo.photo, data: {toggle: "lightbox", title: "#{image_title}", gallery: "example-gallery" } %>
   </div>

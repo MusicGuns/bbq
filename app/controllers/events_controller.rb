@@ -3,7 +3,7 @@
 # Контроллер, управляющий событиями
 class EventsController < ApplicationController
   after_action :verify_policy_scoped, only: %i[edit destroy update]
-  after_action :verify_authorized, except: %i[index password]
+  after_action :verify_authorized, except: %i[index show]
   # Встроенный в девайз фильтр - посылает незалогиненного пользователя
   before_action :authenticate_user!, except: %i[show index password]
 
@@ -17,7 +17,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    authorize @event
+    event_context = EventContext.new(@event, password_param)
+    raise Pundit::NotAuthorizedError unless EventPolicy.new(current_user, event_context).show?
     # Болванка модели для формы добавления комментария
     @new_comment = @event.comments.build(params[:comment])
 

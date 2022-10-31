@@ -17,7 +17,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def show?
-    password_is_right?(record, @password)
+    password_is_right?(record.event, record.password)
   end
 
   def update?

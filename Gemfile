@@ -1,25 +1,25 @@
 source 'https://rubygems.org'
 ruby '2.6.10'
 
-gem 'sassc-rails'
+gem 'active_storage_validations'
+gem 'aws-sdk-s3', require: false
 gem 'bootsnap'
+gem 'coffee-rails'
 gem 'devise'
 gem 'devise-i18n'
+gem 'dotenv-rails'
+gem 'font-awesome-rails'
+gem 'image_processing', '>= 1.2'
 gem 'jquery-rails'
+gem 'listen'
+gem 'pundit'
 gem 'rails', '~> 5.2'
-gem 'russian' 
+gem 'russian'
+gem 'sassc-rails'
+gem 'skeleton'
+gem 'sprockets'
 gem 'twitter-bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
-gem 'skeleton'
-gem 'coffee-rails'
-gem 'dotenv-rails'
-gem "image_processing", ">= 1.2"
-gem 'sprockets'
-gem 'listen'
-gem "font-awesome-rails"
-gem "aws-sdk-s3", require: false
-gem "active_storage_validations"
-gem 'pundit', '~> 1.1'
 
 group :production do
   gem 'pg'
@@ -27,18 +27,19 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'sqlite3'
-  gem 'rspec-rails', '~> 5.0.0'
   gem 'pundit-matchers', '~> 1.7.0'
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'sqlite3'
+  gem 'factory_girl_rails'
 end
 
 group :development do
   gem 'capistrano', '~> 3.8'
-  gem 'capistrano-rails', '~> 1.2'
-  gem 'capistrano-passenger', '~> 0.2'
-  gem 'capistrano-rbenv', '~> 2.1'
   gem 'capistrano-bundler', '~> 1.2'
+  gem 'capistrano-passenger', '~> 0.2'
+  gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano-rbenv', '~> 2.1'
 
-  gem 'ed25519', '>= 1.2', '< 2.0'
   gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
+  gem 'ed25519', '>= 1.2', '< 2.0'
 end

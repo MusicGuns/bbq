@@ -3,14 +3,18 @@
 # Контроллер вложенного ресурса комментариев
 class CommentsController < ApplicationController
   # задаем "родительский" event для коммента
+  after_action :verify_authorized, only: [:create, :destroy]
   before_action :set_event, only: [:create, :destroy]
 
   # задаем сам коммент
   before_action :set_comment, only: [:destroy]
 
   def create
+
     @new_comment = @event.comments.build(comment_params)
     @new_comment.user = current_user
+
+    authorize @new_comment
 
     if @new_comment.save
       # уведомляем всех подписчиков о новом комментарии
@@ -25,6 +29,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    authorize @comment
+
     message = {notice: I18n.t('controllers.comments.destroyed')}
 
     if current_user_can_edit?(@comment)
@@ -37,6 +43,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def set_event
     @event = Event.find(params[:event_id])
   end
