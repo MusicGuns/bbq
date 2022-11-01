@@ -1,13 +1,15 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.17.1"
+lock '~> 3.17.1'
 
-set :application, "bbqmaker"
-set :repo_url, "git@github.com:MusicGuns/bbq.git"
+set :application, 'bbqmaker'
+set :repo_url, 'git@github.com:MusicGuns/bbq.git'
 
 set :deploy_to, '/home/deploy/www'
 
 append :linked_files, 'config/database.yml', 'config/secrets.yml'
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads'
+
+after 'deploy:restart', 'sidekiq:restart'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

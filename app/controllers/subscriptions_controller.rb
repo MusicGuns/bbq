@@ -2,20 +2,20 @@
 #
 # Контроллер вложенного ресурса подписок
 class SubscriptionsController < ApplicationController
-  after_action :verify_authorized, only: [:create, :destroy]
-  before_action :set_event, only: [:create, :destroy]
+  after_action :verify_authorized, only: %i[create destroy]
+  before_action :set_event, only: %i[create destroy]
 
   before_action :set_subscription, only: [:destroy]
 
   def create
     @new_subscription = @event.subscriptions.build(subscription_params)
     @new_subscription.user = current_user
-    
+
     authorize @new_subscription
 
     if @new_subscription.save
       # Отправляем письмо автору события
-      EventMailer.subscription(@event, @new_subscription).deliver_now
+      EventMailJob.perform_async(@event.id, @new_subscription.id, Subscription)
 
       redirect_to @event, notice: I18n.t('controllers.subscriptions.created')
     else
@@ -26,18 +26,19 @@ class SubscriptionsController < ApplicationController
   def destroy
     authorize @subscription
 
-    message = {notice: I18n.t('controllers.subscriptions.destroyed')}
+    message = { notice: I18n.t('controllers.subscriptions.destroyed') }
 
     if current_user_can_edit?(@subscription)
       @subscription.destroy
     else
-      message = {alert: I18n.t('controllers.subscriptions.error')}
+      message = { alert: I18n.t('controllers.subscriptions.error') }
     end
 
     redirect_to @event, message
   end
 
   private
+
   def set_subscription
     @subscription = @event.subscriptions.find(params[:id])
   end

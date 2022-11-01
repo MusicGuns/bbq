@@ -16,6 +16,7 @@ gem 'pundit'
 gem 'rails', '~> 5.2'
 gem 'russian'
 gem 'sassc-rails'
+gem 'sidekiq', '~> 6.0'
 gem 'skeleton'
 gem 'sprockets'
 gem 'twitter-bootstrap-rails'
@@ -27,10 +28,10 @@ end
 
 group :development, :test do
   gem 'byebug'
+  gem 'factory_girl_rails'
   gem 'pundit-matchers', '~> 1.7.0'
   gem 'rspec-rails', '~> 5.0.0'
   gem 'sqlite3'
-  gem 'factory_girl_rails'
 end
 
 group :development do
@@ -41,5 +42,6 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.1'
 
   gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
+  gem 'capistrano-sidekiq'
   gem 'ed25519', '>= 1.2', '< 2.0'
 end

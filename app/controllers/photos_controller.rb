@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
 
     authorize @new_photo
     if @new_photo.save
-      notify_subscribers(@event, @new_photo)
+      EventMailJob.perform_async(@event.id, @new_photo.id, Photo)
       # Если фотографию удалось сохранить, редирект на событие с сообщением
       redirect_to @event, notice: I18n.t('controllers.photos.created')
     else
