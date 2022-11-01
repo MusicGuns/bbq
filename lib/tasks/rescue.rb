@@ -1,1 +1,0 @@
-:thread_safe => true, :db => db) 
