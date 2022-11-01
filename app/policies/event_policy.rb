@@ -1,5 +1,4 @@
 class EventPolicy < ApplicationPolicy
-
   def create?
     user.present?
   end
@@ -17,7 +16,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def show?
-    password_is_right?(record.event, record.password)
+    password_authorization_successful?(record.cookies, record.event, record.password)
   end
 
   def update?
@@ -36,11 +35,19 @@ class EventPolicy < ApplicationPolicy
     user.present? && (event.try(:user) == user)
   end
 
-  def password_is_right?(event, password)
-    if (event.subscribers + [event.user]).include?(user) || event.password.nil?
-      true
-    else
-      event.password == password
-    end
+  def password_authorization_successful?(cookies, event, password)
+    return true if event.user == user
+    return true if event.password.nil?
+
+    cookies.permanent["event_#{event.id}_password"] = password if password.present? && event.password == password
+
+    return true if password_valid?(cookies, event)
+
+    false
+  end
+
+  def password_valid?(cookies, event)
+    cookies.permanent["event_#{event.id}_password"].present? &&
+      cookies.permanent["event_#{event.id}_password"] == event.password
   end
 end

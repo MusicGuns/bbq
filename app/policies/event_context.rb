@@ -1,7 +1,8 @@
 class EventContext
-  attr_reader :event, :password
+  attr_reader :event, :password, :cookies
 
-  def initialize(event, password)
+  def initialize(cookies, event, password)
+    @cookies = cookies
     @event = event
     @password = password
   end

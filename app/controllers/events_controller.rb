@@ -17,8 +17,9 @@ class EventsController < ApplicationController
   end
 
   def show
-    event_context = EventContext.new(@event, password_param)
+    event_context = EventContext.new(cookies, @event, password_param)
     raise Pundit::NotAuthorizedError unless EventPolicy.new(current_user, event_context).show?
+
     # Болванка модели для формы добавления комментария
     @new_comment = @event.comments.build(params[:comment])
 
@@ -90,9 +91,7 @@ class EventsController < ApplicationController
   end
 
   def render_password
-    unless password_param.nil?
-      flash.now[:alert] = I18n.t("pundit.not_authorized")
-    end
+    flash.now[:alert] = I18n.t('pundit.not_authorized') unless password_param.nil?
     render :password
   end
 end
