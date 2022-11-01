@@ -9,6 +9,14 @@ set :deploy_to, '/home/deploy/www'
 append :linked_files, 'config/database.yml', 'config/secrets.yml'
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads'
 
+set sidekiq_roles: :worker
+set sidekiq_default_hooks: true
+set sidekiq_env: fetch(:rack_env, fetch(:rails_env, fetch(:stage)))
+# single config
+set :sidekiq_config_files, ['sidekiq.yml']
+# multiple configs
+set :sidekiq_config_files, ['sidekiq.yml', 'sidekiq-2.yml'] #  you can also set it per server
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
