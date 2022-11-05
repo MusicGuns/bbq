@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   has_one_attached :avatar
 
   def self.find_for_yandex_oauth(access_token)
-    email = access_token.info.email
+    email = access_token.info.email.downcase
     user = where(email: email).first
     nickname = access_token.info.nickname
 
