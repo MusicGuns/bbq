@@ -246,8 +246,8 @@ Devise.setup do |config|
   config.omniauth :yandex, Rails.application.secrets.omniauth_yandex_id,
                   Rails.application.secrets.omniauth_yandex_secret
 
-  config.omniauth :vkontakte, Rails.application.secrets.omniauth_vkontakte_id,
-                  Rails.application.secrets.omniauth_vkontakte_secret
+  #config.omniauth :vkontakte, Rails.application.secrets.omniauth_vkontakte_id,
+                  #Rails.application.secrets.omniauth_vkontakte_secret
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
