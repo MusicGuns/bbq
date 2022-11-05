@@ -4,7 +4,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[yandex]
+         :omniauthable, omniauth_providers: %i[yandex vkontakte]
 
   # Юзер может создавать много событий
   has_many :events, dependent: :destroy
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   # Добавляем аплоадер аватарок, чтобы заработал carrierwave
   has_one_attached :avatar
 
-  def self.find_for_yandex_oauth(access_token)
+  def self.find_for_oauth(access_token)
     email = access_token.info.email.downcase
     user = where(email: email).first
     nickname = access_token.info.nickname
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
     provider = access_token.provider
     id = access_token.extra.raw_info.id
-    url = "https://yandex.ru/#{id}"
+    url = "https://#{provider}.ru/#{id}"
 
     where(url: url, provider: provider).first_or_create! do |new_user|
       new_user.email = email
