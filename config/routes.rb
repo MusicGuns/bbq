@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   # дергаем спец. девайзовский метод, который генерит все нужные ему пути
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
 
   root 'events#index'
 
   resources :events do
-
     # вложенный ресурс комментов
     resources :comments, only: %i[create destroy]
 
