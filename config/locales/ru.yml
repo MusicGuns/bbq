@@ -122,4 +122,7 @@ ru:
   pundit:
     not_authorized: "Доступ запрещён"
     not_subscriber: "Вы должны быть подписаны на событие"
+  devise:
+    auth:
+      Yandex: "Войти через Яндекс"
   

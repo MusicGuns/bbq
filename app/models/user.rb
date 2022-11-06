@@ -4,7 +4,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[yandex vkontakte]
+         :omniauthable, omniauth_providers: %i[yandex]
 
   # Юзер может создавать много событий
   has_many :events, dependent: :destroy
