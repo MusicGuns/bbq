@@ -59,7 +59,7 @@ ru:
   # Перевод названия приложения и компании-разработчика
   app:
     name: 'Шашлыки'
-    company: 'goodprogrammer Company'
+    company: 'Хороший программист 2016'
   misc:
     errors:
       one: 'В вашей форме 1 ошибка'
